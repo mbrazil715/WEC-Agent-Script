@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEC Energy Group - Modern Agent Script</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- Header -->
+        <header class="bg-white p-6 shadow-sm rounded-2xl mb-8 flex justify-between items-center border border-slate-100">
+            <div class="flex items-center gap-6">
+                <div class="font-bold text-slate-900 text-2xl tracking-tight">WEC Energy Group</div>
+                <div class="text-sm text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full font-medium">Interaction ID: #8839201</div>
+            </div>
+            
+            <!-- Tab Switcher -->
+            <div class="flex bg-slate-100 p-1 rounded-xl">
+                <button onclick="switchTab('new-service')" id="btn-new-service" class="px-6 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-emerald-700 shadow-sm">New Service</button>
+                <button onclick="switchTab('service-move')" id="btn-service-move" class="px-6 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 hover:text-slate-900">Service Move</button>
+            </div>
+
+            <div class="flex items-center gap-6 text-sm text-slate-600">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span>Agent: <strong class="text-slate-900">John Doe</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Sidebar: Dynamic Customer Info -->
+            <div class="space-y-6">
+                <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-100">
+                    <h2 class="text-slate-400 font-bold mb-6 uppercase text-[10px] tracking-[0.2em]">Bot Data Captured</h2>
+                    
+                    <!-- New Service Data -->
+                    <div id="data-new-service" class="space-y-5 text-sm tab-content active">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Name</span>
+                            <span class="font-medium text-slate-900">Jane Smith</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Type</span>
+                            <span class="font-medium text-emerald-600">New Service Start</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Address</span>
+                            <span class="font-medium text-slate-900">456 Oak Avenue</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Start Date</span>
+                            <span class="font-medium text-slate-900">2026-07-01</span>
+                        </div>
+                    </div>
+
+                    <!-- Service Move Data -->
+                    <div id="data-service-move" class="space-y-5 text-sm tab-content">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Name</span>
+                            <span class="font-medium text-slate-900">Jane Smith</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Type</span>
+                            <span class="font-medium text-blue-600">Service Move</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">New Address</span>
+                            <span class="font-medium text-slate-900">123 Demo St</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Move Date</span>
+                            <span class="font-medium text-slate-900">2026-06-25</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-100">
+                    <h2 class="text-slate-400 font-bold mb-6 uppercase text-[10px] tracking-[0.2em]">Navigation</h2>
+                    <nav class="space-y-3 text-sm">
+                        <a href="#" class="block p-3 rounded-lg hover:bg-slate-50 text-slate-700 font-medium transition-colors">Account Verification</a>
+                        <a href="#" class="block p-3 rounded-lg hover:bg-slate-50 text-slate-700 font-medium transition-colors">Service Agreement</a>
+                        <a href="#" class="block p-3 rounded-lg hover:bg-slate-50 text-slate-700 font-medium transition-colors">Service Schedule</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Script Area -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- New Service View -->
+                <div id="content-new-service" class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 tab-content active">
+                    <h1 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">New Service Start</h1>
+                    <p class="text-slate-600 mb-8 text-lg leading-relaxed italic border-l-4 border-emerald-500 pl-6">"Welcome to WEC Energy Group, Jane. I'm happy to help you get started with your new service at 456 Oak Avenue starting on July 1st. Shall we review your plan options?"</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Agent Guidance -->
+                        <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
+                            <h2 class="text-emerald-900 font-semibold mb-3 flex items-center gap-2">
+                                <span class="text-lg">💡</span> Agent Guidance
+                            </h2>
+                            <p class="text-emerald-800 text-sm leading-relaxed">Ensure customer has valid identification and bank details ready for auto-pay setup to avoid credit deposit requirements.</p>
+                        </div>
+                        <!-- Quick Tools -->
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h2 class="text-slate-900 font-semibold mb-3 flex items-center gap-2">
+                                <span class="text-lg">🛠️</span> Quick Tools
+                            </h2>
+                            <div class="space-y-2">
+                                <button class="w-full text-left text-sm text-emerald-700 hover:text-emerald-900 font-medium p-2 hover:bg-emerald-100 rounded-lg transition-all">→ Open Plan Comparison Tool</button>
+                                <button class="w-full text-left text-sm text-emerald-700 hover:text-emerald-900 font-medium p-2 hover:bg-emerald-100 rounded-lg transition-all">→ Launch Credit Check</button>
+                            </div>
+                        </div>
+                    </div>
+                    <textarea class="w-full h-32 mt-8 p-5 border border-slate-200 rounded-2xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition-all" placeholder="Enter notes for new account..."></textarea>
+                </div>
+
+                <!-- Service Move View -->
+                <div id="content-service-move" class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 tab-content">
+                    <h1 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Service Move Request</h1>
+                    <p class="text-slate-600 mb-8 text-lg leading-relaxed italic border-l-4 border-blue-500 pl-6">"I see here you're looking to move your service to 123 Demo St. I have that date set for June 25th. Does that still work for you, Jane?"</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Agent Guidance -->
+                        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                            <h2 class="text-blue-900 font-semibold mb-3 flex items-center gap-2">
+                                <span class="text-lg">💡</span> Agent Guidance
+                            </h2>
+                            <p class="text-blue-800 text-sm leading-relaxed">Check for any final meter read requirements at the old address before confirming the move-out date.</p>
+                        </div>
+                        <!-- Quick Tools -->
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h2 class="text-slate-900 font-semibold mb-3 flex items-center gap-2">
+                                <span class="text-lg">🛠️</span> Quick Tools
+                            </h2>
+                            <div class="space-y-2">
+                                <button class="w-full text-left text-sm text-blue-700 hover:text-blue-900 font-medium p-2 hover:bg-blue-100 rounded-lg transition-all">→ View Service History</button>
+                                <button class="w-full text-left text-sm text-blue-700 hover:text-blue-900 font-medium p-2 hover:bg-blue-100 rounded-lg transition-all">→ Schedule Final Meter Read</button>
+                            </div>
+                        </div>
+                    </div>
+                    <textarea class="w-full h-32 mt-8 p-5 border border-slate-200 rounded-2xl text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Additional notes or address adjustments..."></textarea>
+                </div>
+
+                <div class="flex justify-end gap-4">
+                    <button class="px-8 py-3 bg-white text-slate-600 rounded-xl font-semibold border border-slate-200 hover:bg-slate-50 transition-all">Escalate</button>
+                    <button class="px-8 py-3 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition-all shadow-md">Finalize Request</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            
+            // Remove active classes from buttons
+            document.getElementById('btn-new-service').classList.remove('bg-white', 'text-emerald-700', 'shadow-sm');
+            document.getElementById('btn-service-move').classList.remove('bg-white', 'text-emerald-700', 'shadow-sm');
+            document.getElementById('btn-new-service').classList.add('text-slate-600');
+            document.getElementById('btn-service-move').classList.add('text-slate-600');
+
+            // Show active content
+            document.getElementById('data-' + tab).classList.add('active');
+            document.getElementById('content-' + tab).classList.add('active');
+            
+            // Set active button style
+            const btn = document.getElementById('btn-' + tab);
+            btn.classList.add('bg-white', 'shadow-sm');
+            btn.classList.remove('text-slate-600');
+            
+            // Color branding
+            if(tab === 'new-service') btn.classList.add('text-emerald-700');
+            else btn.classList.add('text-blue-700');
+        }
+    </script>
+</body>
+</html>
